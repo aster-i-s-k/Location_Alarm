@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Location Alarm</string>
+    <string name="RequireAuthority_Title">権限の許可</string>
+    <string name="RequireAuthority_value1">他のアプリの上に重ねて表示する権限を許可してください</string>
+    <string name="RequireAuthority_value2">システム設定を書き換える権限を許可してください</string>
+    <string name="RequireAuthority_value3">位置情報の権限を許可をしてください</string>
+    <string name="RequireAuthority_Location_Explain">(Android11以降の場合)その後に「常に許可」を選択してください</string>
+    <string name="RequireAuthority_value4">通知を送信する権限を許可してください</string>
+    <string name="RequireAuthority_value5">アラームを設定する権限を許可してください</string>
+    <string name="RequireAuthority_Button">許可</string>
+    <string name="Home_Position">現在地特定中</string>
+    <string name="Home_precision">精度</string>
+    <string name="Home_explanation2">・アラームを長押しして削除</string>
+    <string name="Home_WaitingTime">∞</string>
+    <string name="Home_addAlarm">addAlarm</string>
+    <string name="Home_Navigation_map">map</string>
+    <string name="Home_Navigation_home">home</string>
+    <string name="Home_Navigation_locate">locate</string>
+    <string name="Alarm_List_Main">Main</string>
+    <string name="Alarm_List_description">description</string>
+    <string name="Alarm_setting_Title">Alarm Setting</string>
+    <string name="Alarm_setting_time">Time Alarm</string>
+    <string name="Alarm_setting_location">Location Alarm</string>
+    <string name="Alarm_setting_time_picker">Time Pick</string>
+    <string name="Alarm_setting_defaultTime">12:00</string>
+    <string name="Alarm_setting_EventAdd">add</string>
+    <string name="Alarm_setting_location_picker">Location Pick</string>
+    <string name="ASL_PickFromName">Pick from Name</string>
+    <string name="ASL_PickFromMap">Pick from Map</string>
+    <string name="ASL_PickInputHint">場所名または(緯度,経度)を入力</string>
+    <string name="ASL_radTextView">到着判定の半径：</string>
+    <string name="ASL_radInputText">500</string>
+    <string name="ASL_radInputHint">単位はｍ(メートル)</string>
+    <string name="Alarm_setting_sound">Sound</string>
+    <string name="Alarm_setting_vibration">Vibration</string>
+    <string name="Alarm_setting_PopUp">PopUp</string>
+    <string name="Alarm_setting_Event">Event</string>
+    <string name="Alarm_setting_inputHint">N=</string>
+    <string name="Alarm_setting_Recycle">Recycle Timer</string>
+    <string name="Alarm_setting_Cancel">Cancel</string>
+    <string name="Alarm_setting_Enter">Enter</string>
+    <string name="Locate_Title">お気に入りの場所登録</string>
+    <string name="Locate_explanation1">・お気に入りの場所を追加するとLocationPickで簡単に場所名を指定できます</string>
+    <string name="Locate_explanation2">・(追加)お気に入りの場所候補をタッチ　or 場所名を打ち込んでaddボタンを押す</string>
+    <string name="Locate_explanation3">・(削除)お気に入りの場所を長押し</string>
+    <string name="Locate_Favorite_Maybe">もしかして：</string>
+    <string name="Locate_Favorite_Candidate">よく行く場所</string>
+    <string name="Locate_Button_Default">いろいろな場所を訪れましょう</string>
+    <string name="Locate_TextBox_hint">お気に入り登録したい場所名を入力してください</string>
+    <string name="Alarm_ringing_explain">空白部分をタッチしてアラームを停止</string>
+
+    <string-array name="Location_rate">
+        <item>判定：広</item>
+        <item>判定：中</item>
+        <item>判定：狭</item>
+    </string-array>
+    <string-array name="Location_StayFor">
+        <item>到着直後</item>
+        <item>N秒滞在後</item>
+    </string-array>
+    <string-array name="Event_list">
+        <item>アプリを起動</item>
+        <item>明るさを調整</item>
+        <item>音量を調節</item>
+    </string-array>
+    <string-array name="Alarm_WaitingFor">
+        <item>アラームを止めるまで鳴らす</item>
+        <item>N秒間鳴らす</item>
+    </string-array>
+</resources>

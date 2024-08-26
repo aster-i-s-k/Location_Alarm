@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/dialog_holo_dark_frame"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Main"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:text="@string/Alarm_List_Main"
+                    android:textColor="@color/white"
+                    android:textSize="34sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text="@string/Alarm_List_description"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="105dp"
+            android:layout_height="70dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="35dp">
+
+                <ImageView
+                    android:id="@+id/Sound"
+                    android:layout_width="35dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    android:contentDescription="@string/Alarm_setting_sound"
+                    app:srcCompat="@drawable/volume_up" />
+
+                <ImageView
+                    android:id="@+id/Vibration"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="0"
+                    android:contentDescription="@string/Alarm_setting_vibration"
+                    app:srcCompat="@drawable/vibration" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_vertical"
+                    android:text="@string/Home_WaitingTime"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="35dp">
+
+                <ImageView
+                    android:id="@+id/Popup"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="0"
+                    android:contentDescription="@string/Alarm_setting_PopUp"
+                    app:srcCompat="@drawable/perm_device_information" />
+
+                <ImageView
+                    android:id="@+id/Event"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="0"
+                    android:contentDescription="@string/Alarm_setting_Event"
+                    app:srcCompat="@drawable/flag" />
+
+                <ImageView
+                    android:id="@+id/Recycle"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="0"
+                    android:contentDescription="@string/Alarm_setting_Recycle"
+                    app:srcCompat="@drawable/sync" />
+            </TableRow>
+
+        </TableLayout>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/Power"
+            style="@style/SwitchCompat"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:checked="true" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
