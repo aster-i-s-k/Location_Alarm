@@ -124,11 +124,15 @@ public class AlarmSettingFragment extends DialogFragment {
         });
 
         dialog.findViewById(R.id.Time_Picker).setOnClickListener(v -> {
-            timepicker.show(requireActivity().getSupportFragmentManager(), "timepicker");
+            if(requireActivity().getSupportFragmentManager().findFragmentByTag("timepicker")==null) {
+                timepicker.show(requireActivity().getSupportFragmentManager(), "timepicker");
+            }
         });
 
         dialog.findViewById(R.id.Location_Picker).setOnClickListener(v -> {
-            new ASF_LocationPickFragment().show(requireActivity().getSupportFragmentManager(), "LocationPicker");
+            if(requireActivity().getSupportFragmentManager().findFragmentByTag("LocationPicker")==null) {
+                new ASF_LocationPickFragment().show(requireActivity().getSupportFragmentManager(), "LocationPicker");
+            }
         });
 
         StayingFor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -188,7 +192,7 @@ public class AlarmSettingFragment extends DialogFragment {
             arrayAdapter.notifyDataSetChanged();
         });
 
-        dialog.findViewById(R.id.Cancel).setOnClickListener(v->{dismiss();});
+        dialog.findViewById(R.id.Cancel).setOnClickListener(v->dismiss());
 
         dialog.findViewById(R.id.Enter).setOnClickListener(v -> {
             ArrayList<String> newEvent= new ArrayList<>();

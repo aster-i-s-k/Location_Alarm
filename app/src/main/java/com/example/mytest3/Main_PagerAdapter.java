@@ -10,9 +10,7 @@ import static com.example.mytest3.Main_Activity.lat;
 import static com.example.mytest3.Main_Activity.lon;
 
 import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,7 +18,6 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -28,7 +25,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -42,7 +38,6 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.Polygon;
-import org.osmdroid.views.overlay.Polyline;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -73,12 +68,17 @@ public class Main_PagerAdapter extends FragmentStateAdapter {
             Main_Activity mainActivity=(Main_Activity)getActivity();
             adapter = new Home_AlarmListAdapter(getContext(), R.layout.home_alarms_list,AlarmItems,mainActivity);
             ListView AlarmView = view.findViewById(R.id.AlarmList);
+
             AlarmView.setOnItemLongClickListener((parent, view1, position, id) -> {
-                ListPos=position;
-                DialogFragment dialogFragment = new Home_AlarmDeleteFragment();
-                dialogFragment.show(requireActivity().getSupportFragmentManager(), "deleteA?");
-                return true;
+                if(requireActivity().getSupportFragmentManager().findFragmentByTag("deleteA?") ==null) {
+                    ListPos = position;
+                    DialogFragment dialogFragment = new Home_AlarmDeleteFragment();
+                    dialogFragment.show(requireActivity().getSupportFragmentManager(), "deleteA?");
+                    return true;
+                }
+                return false;
             });
+
             AlarmView.setAdapter(adapter);
 
             pos=view.findViewById(R.id.pos);
@@ -164,10 +164,12 @@ public class Main_PagerAdapter extends FragmentStateAdapter {
             areas.clear();
             for(ArrayList<String> Alarm:Alarms){
                 System.out.println(Alarm.get(1));
-                if(Objects.equals(Alarm.get(1), "Location")){
-                    GeoPoint point = new GeoPoint(Double.valueOf(Alarm.get(11)),Double.valueOf(Alarm.get(12)));
-                    holes.add(Polygon.pointsAsCircle(point,Double.valueOf(Alarm.get(10))));
-                    holes.get(0).add(holes.get(0).get(0));
+                if(Objects.equals(Alarm.get(0),"true")) {
+                    if (Objects.equals(Alarm.get(1), "Location")) {
+                        GeoPoint point = new GeoPoint(Double.parseDouble(Alarm.get(11)), Double.parseDouble(Alarm.get(12)));
+                        holes.add(Polygon.pointsAsCircle(point, Double.parseDouble(Alarm.get(10))));
+                        holes.get(0).add(holes.get(0).get(0));
+                    }
                 }
             }
             for(List<GeoPoint> hole:holes) {

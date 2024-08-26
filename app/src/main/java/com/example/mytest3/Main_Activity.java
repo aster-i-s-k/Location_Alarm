@@ -281,8 +281,10 @@ public class Main_Activity extends AppCompatActivity{
 
     //アラーム追加ボタン
     public void click_add(View view){
-        dialogFragment = new AlarmSettingFragment();
-        dialogFragment.show(getSupportFragmentManager(),"dialog");
+        if(getSupportFragmentManager().findFragmentByTag("dialog")==null) {
+            dialogFragment = new AlarmSettingFragment();
+            dialogFragment.show(getSupportFragmentManager(), "dialog");
+        }
     }
 
     //アラーム追加

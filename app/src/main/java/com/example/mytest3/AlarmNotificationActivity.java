@@ -157,10 +157,22 @@ public class AlarmNotificationActivity extends Activity {
             //{{0is_on,1"Location",2location,3is_recycle,4is_sound,5is_vibration,6is_Popup,7is_Event,8waiting_for,9staying_for,10within,11lat,12lon},{~},...}
             ArrayList<String> Alarm;
             if(isLocationAlarm) {
-                Alarm = Alarms.get(RequestCode);
-                saveAlarmIsLocation();
+                if(RequestCode==-1){
+                    stop_Alarm();
+                    return;
+                }
+                else {
+                    Alarm = Alarms.get(RequestCode);
+                    saveAlarmIsLocation();
+                }
             }else {
-                Alarm = Alarms.get(RequestCodeTime);
+                if(RequestCodeTime==-1){
+                    stop_Alarm();
+                    return;
+                }
+                else {
+                    Alarm = Alarms.get(RequestCodeTime);
+                }
             }
             if (Objects.equals(Alarm.get(0), "true")) {//is_on is true
                 if (!Objects.equals(Alarm.get(3), "true")) {delete_Alarm();}
@@ -383,11 +395,17 @@ public class AlarmNotificationActivity extends Activity {
     }
     public void stop_Alarm(){
         stop_sound();
-        vibrator.cancel();
+        if(vibrator!=null) {
+            System.out.println(vibrator);
+            vibrator.cancel();
+        }
         NotificationManager notificationManager = getSystemService(NotificationManager.class);
         notificationManager.cancel(R.string.app_name);
         if(!(isLocked && bool)) {
-            wm.removeView(AlarmView);
+            try {
+                wm.removeView(AlarmView);
+            } catch (Exception ignored) {
+            }
         }
         this.finishAndRemoveTask();
     }
