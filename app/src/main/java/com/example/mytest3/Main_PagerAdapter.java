@@ -245,7 +245,7 @@ public class Main_PagerAdapter extends FragmentStateAdapter {
                 Location_Count.add(new MyComparableObject(MaybeLocation.get(i), MaybeLocation_count.get(i)));
             }
             Collections.sort(Location_Count);
-            if(Location_Count.size()>0) {
+            if(!Location_Count.isEmpty()) {
                 addButton1.setText(Location_Count.get(0).getName());
             }
             if(Location_Count.size()>1) {
@@ -284,7 +284,7 @@ public class Main_PagerAdapter extends FragmentStateAdapter {
 
             AddLocation.setOnClickListener(v->{
                 String text = Objects.requireNonNull(editText.getText()).toString();
-                if(!text.equals("")){
+                if(!text.isEmpty()){
                     FavoriteLocation.add(text);
                     editText.setText("");
                     arrayAdapter.notifyDataSetChanged();

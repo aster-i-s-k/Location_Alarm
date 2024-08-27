@@ -181,7 +181,7 @@ public class LocationService extends Service implements LocationListener {
     private void registerMaybeLocation(ArrayList<String[]> Pos_All){
         for(String[] item:Pos_All){
             if(Integer.parseInt(item[1])>=70){
-                if(FavoriteLocation.contains(item[0])) {
+                if(!FavoriteLocation.contains(item[0])) {
                     if (MaybeLocation.contains(item[0])) {
                         int pos = MaybeLocation.indexOf(item[0]);
                         MaybeLocation_count.set(pos, MaybeLocation_count.get(pos) + 1);
@@ -243,7 +243,7 @@ public class LocationService extends Service implements LocationListener {
             try {
                 array1.put(i, MaybeLocation.get(i));
             } catch (JSONException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
         SharedPreferences.Editor editor1 = getApplicationContext().getSharedPreferences("shared_preference", Context.MODE_PRIVATE).edit();
@@ -255,7 +255,7 @@ public class LocationService extends Service implements LocationListener {
             try {
                 array2.put(i, MaybeLocation_count.get(i));
             } catch (JSONException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
         SharedPreferences.Editor editor2 = getApplicationContext().getSharedPreferences("shared_preference", Context.MODE_PRIVATE).edit();
